@@ -1,0 +1,11 @@
+{
+  "name": "gender-neutral-recognizer",
+  "version": "1.0.0",
+  "description": "Browser-based Gender Neutral Language Recognizer using JavaScript regular expressions.",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/recognizer.test.js",
+    "start": "npx --yes http-server . -p 8080"
+  },
+  "license": "MIT"
+}

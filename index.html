@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gender Neutral Language Recognizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Gender Neutral Language Recognizer</h1>
+      <p class="tagline">Upload a text, PDF, or Word document to find predefined gender-specific terms and review suggested gender-neutral alternatives.</p>
+      <span class="badge">Powered by regular expressions</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" aria-labelledby="upload-heading">
+      <h2 id="upload-heading">1. Select a document</h2>
+      <div id="drop-zone" class="drop-zone">
+        <label for="file-input" class="field-label">Choose a .txt, .pdf, or .docx file</label>
+        <input type="file" id="file-input" accept=".txt,.pdf,.docx,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+        <p class="hint">or drag and drop a file here</p>
+        <p id="selected-file" class="selected-file" aria-live="polite">No file selected.</p>
+      </div>
+      <div class="actions">
+        <button type="button" id="analyze-btn" class="btn btn-primary">Analyze Document</button>
+        <button type="button" id="clear-btn" class="btn btn-secondary">Clear Results</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="summary-section" class="card" aria-labelledby="summary-heading" hidden>
+      <h2 id="summary-heading">2. Analysis summary</h2>
+      <dl class="summary">
+        <div><dt>Document</dt><dd id="summary-doc"></dd></div>
+        <div><dt>Distinct recognized terms</dt><dd id="summary-distinct"></dd></div>
+        <div><dt>Total occurrences</dt><dd id="summary-total"></dd></div>
+      </dl>
+    </section>
+
+    <section id="results-section" class="card" aria-labelledby="results-heading" hidden>
+      <h2 id="results-heading">3. Results</h2>
+      <div class="table-wrap">
+        <table id="results-table">
+          <caption class="visually-hidden">Detected gender-specific terms, occurrence counts, and suggested alternatives</caption>
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Gender-specific term</th>
+              <th scope="col">Number of occurrences</th>
+              <th scope="col">Suggested gender-neutral alternative</th>
+            </tr>
+          </thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+      <p class="note">Suggestions are for review only. The appropriate replacement depends on context, and the original file is never modified. The dictionary does not cover every potentially gender-biased expression.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Automata and Language Theory &ndash; BSCS 3A &ndash; Bohol Island State University</div>
+  </footer>
+
+  <!-- Optional libraries for .pdf and .docx (see README). Missing files only disable that format. -->
+  <script src="lib/pdf.min.js"></script>
+  <script src="lib/mammoth.browser.min.js"></script>
+  <script src="recognizer.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
